@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<canvas width="1000 " height="700"></canvas>
+<!-- 
+    The Brazilian flag has official proportions defined by law, 
+but there is no precise specification regarding the size in pixels. 
+However, the official proportion of the flag is 7:10 (height:width), 
+which means that you can use this proportion to determine the size 
+in pixels of the flag according to the desired width.  
+-->
+
+
+
+<body>
+    <script>
+        var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+        /*Brazilian flag with a width of 500 pixels, 
+        you can calculate the height by multiplying the width by 7/10 as:
+        500 x 7/10 = 350
+        
+        Therefore, the image of the Brazilian flag with a width of 500 pixels
+        would have a height of 350 pixels. It is important to remember that 
+        these dimensions are only a suggestion and that the actual size 
+        may vary depending on the image resolution and intended use.
+        */
+
+        //rect
+     
+        pincel.fillStyle='green';
+    pincel.fillRect(0, 0, 500, 350);
+
+    </script>
+</body>
+
+</html>
