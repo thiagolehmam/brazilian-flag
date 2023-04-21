@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,12 +17,10 @@ which means that you can use this proportion to determine the size
 in pixels of the flag according to the desired width.  
 -->
 
-
-
 <body>
     <script>
         var tela = document.querySelector('canvas');
-    var pincel = tela.getContext('2d');
+        var pincel = tela.getContext('2d');
 
         /*Brazilian flag with a width of 500 pixels, 
         you can calculate the height by multiplying the width by 7/10 as:
@@ -34,11 +33,38 @@ in pixels of the flag according to the desired width.
         */
 
         //rect
-     
-        pincel.fillStyle='green';
-    pincel.fillRect(0, 0, 500, 350);
+        pincel.fillStyle = 'green';
+        pincel.fillRect(0, 0, 500, 350);
+
+        /*The diamond on the Brazilian flag has proportions defined by law. 
+        According to Brazilian legislation, the diamond must have a width 
+        equivalent to 1/2 of the flag's width and a height equivalent to 
+        1/2 of the flag's height.
+        
+        Since the official proportion of the flag is 7:10 (height:width), 
+        we can calculate the proportions of the diamond as follows:
+        
+        -- Width of the diamond: 1/2 x width of the flag = 1/2 x (10 units of measurement) = 5 units of measurement
+        -- Height of the diamond: 1/2 x height of the flag = 1/2 x (7 units of measurement) = 3.5 units of measurement
+        
+        Therefore, the diamond on the Brazilian flag is 5:3.5 (width:height), so if rect width is 500px, 
+        the proportion of the diamond would be 250:175 pixels (width:height), 
+        */
+
+        //diamond 250 by 175
+        pincel.fillStyle = 'yellow';
+        pincel.beginPath();
+        pincel.moveTo(250, 50);
+        pincel.lineTo(50, 175);
+        pincel.lineTo(450, 175);
+        pincel.fill();
+        //bottom triangle
+        pincel.beginPath();
+        pincel.moveTo(250, 300);
+        pincel.lineTo(50, 175);
+        pincel.lineTo(450, 175);
+        pincel.fill();
 
     </script>
 </body>
-
 </html>
