@@ -18,8 +18,8 @@ in pixels of the flag according to the desired width.
 
 <body>
     <script>
-        var tela = document.querySelector('canvas');
-        var pincel = tela.getContext('2d');
+        var screen = document.querySelector('canvas');
+        var brush = screen.getContext('2d');
 
         /*Brazilian flag with a width of 500 pixels, 
         you can calculate the height by multiplying the width by 7/10 as:
@@ -32,10 +32,35 @@ in pixels of the flag according to the desired width.
         */
 
         //rect
-        pincel.fillStyle = 'green';
-        pincel.fillRect(0, 0, 500, 350);
+        function drawRect(x, y, width, height, color) {
+            brush.fillStyle = color;
+            brush.fillRect(x, y, width, height);
+        }
 
-        /*The diamond on the Brazilian flag has proportions defined by law. 
+        function drawTriangle(x, y, firstLineMoveX, firstLineMoveY, secondLineMoveX, secondLineMoveY, color) {
+            brush.fillStyle = color;
+            brush.beginPath();
+            brush.moveTo(x, y);
+            brush.lineTo(firstLineMoveX, firstLineMoveY);
+            brush.lineTo(secondLineMoveX, secondLineMoveY);
+            brush.fill();
+        }
+
+        //circle
+        function drawCircle(x, y, raio, cor) {
+            brush.fillStyle = cor;
+            brush.beginPath();
+            brush.arc(x, y, raio, 0, 2 * Math.PI);
+            brush.fill();
+        }
+
+        drawRect(0, 0, 500, 350, "green");
+        //diamond 
+        drawTriangle(250, 50, 50, 175, 450, 175, "yellow");//top triangle
+        drawTriangle(250, 300, 50, 175, 450, 175, "yellow");//bottom triangle
+        drawCircle(250, 170, 80, "darkblue");
+
+                /*The diamond on the Brazilian flag has proportions defined by law.
         According to Brazilian legislation, the diamond must have a width 
         equivalent to 1/2 of the flag's width and a height equivalent to 
         1/2 of the flag's height.
@@ -49,29 +74,6 @@ in pixels of the flag according to the desired width.
         Therefore, the diamond on the Brazilian flag is 5:3.5 (width:height), so if rect width is 500px, 
         the proportion of the diamond would be 250:175 pixels (width:height), 
         */
-
-        //diamond 250 by 175
-        pincel.fillStyle = 'yellow';
-        pincel.beginPath();
-        pincel.moveTo(250, 50);
-        pincel.lineTo(50, 175);
-        pincel.lineTo(450, 175);
-        pincel.fill();
-        
-        //bottom triangle
-        pincel.beginPath();
-        pincel.moveTo(250, 300);
-        pincel.lineTo(50, 175);
-        pincel.lineTo(450, 175);
-        pincel.fill();
-
-        //blue circle
-        pincel.fillStyle = 'darkblue';
-        pincel.beginPath();
-        pincel.arc(250, 170, 80, 0, 2 * 3.14);
-        pincel.fill();
-
     </script>
 </body>
-
 </html>
